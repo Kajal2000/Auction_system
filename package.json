@@ -1,0 +1,17 @@
+{
+  "name": "auction_system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.20.9",
+    "mysql": "^2.18.1",
+    "pg": "^7.18.1"
+  }
+}
