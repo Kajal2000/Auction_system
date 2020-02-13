@@ -17,6 +17,8 @@ knex.schema.createTable('Bidder_data_tbl', (table) => {
     table.string('bidder_name');
     table.integer('bidder_price');
     table.increments('bidder_id');
+    table.integer("auction_id").unsigned()
+    table.foreign("auction_id").references("auctioneer_data.auction_id")
     })
     .then(()=>{
         console.log("tbl created")
