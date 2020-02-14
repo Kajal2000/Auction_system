@@ -18,7 +18,7 @@ app.post("/api",(req,res)=>{
 app.get("/api/:auction_id",(req,res)=>{
     let auction_id = req.params.auction_id
     var data_1 = appDB.get_by_id(auction_id);
-    data_1.then((data)=>{
+    setTimeout(() => data_1.then((data)=>{
         for(var k = 0; k<data.length; k++ ){
         let auction_id = data[k]["auction_id"]
         if (data[k]["price"] < req.body.bidder_price){
@@ -36,7 +36,7 @@ app.get("/api/:auction_id",(req,res)=>{
             })
         }
         }
-    })
+    }),1000)
 })
 
 
@@ -63,7 +63,7 @@ app.get("/get_max/:auction_id",(req,res)=>{
                 bidder_id : bidder_id,
                 auction_id : auction_id
             }
-        res.send(you_win)
+        res.send(won_data)
             }
         }
     }).catch((err)=>{
