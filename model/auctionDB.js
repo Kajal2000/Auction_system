@@ -15,10 +15,15 @@ let insert_bidder = (store) => {
     return knex("Bidder_data_tbl").insert(store)
 
 }
+let get_id = (auction_id) =>{
+    return knex("Bidder_data_tbl")
+    .select("*")
+    .where("Bidder_data_tbl.auction_id",auction_id)
+}
+
 
 // let del_bidder = (auction_id) => {
 //     return knex("Bidder_data_tbl").del(auction_id)
-
 // }
 
-module.exports = {insert_data,get_by_id,insert_bidder}
+module.exports = {insert_data,get_by_id,insert_bidder,get_id}

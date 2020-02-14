@@ -24,7 +24,8 @@ app.get("/api/:auction_id",(req,res)=>{
             let store = {
                 "bidder_name" : req.body.bidder_name,
                 "bidder_price" : req.body.bidder_price,
-                "auction_id" : auction_id
+                "auction_id" : auction_id,
+                "bidder_id" :req.body.bidder_id
             }
             appDB.insert_bidder(store)
             .then(()=>{
@@ -35,6 +36,38 @@ app.get("/api/:auction_id",(req,res)=>{
         }
     })
 })
+
+
+app.get("/get_max/:auction_id",(req,res)=>{
+    let auction_id = req.params.auction_id
+    var data1 = appDB.get_id(auction_id);
+    data1.then((res_data)=>{
+        var max_data = []
+        for(let i = 0; i < res_data.length; i++){
+        let data = (res_data[i]["bidder_price"])
+        max_data.push(data)
+        var max_value = Math.max(...max_data)
+        }
+        for( let j = 0; j <res_data.length; j++){
+            let data = res_data[j]["bidder_price"]
+            if(data == max_value){
+                let name = res_data[j]["bidder_name"]
+                let price = max_value
+                let bidder_id = res_data[j]["bidder_id"]
+                let auction_id = res_data[j]["auction_id"]
+            let won_data = {
+                name : name,
+                price : price,
+                bidder_id : bidder_id,
+                auction_id : auction_id
+            }
+        res.send(won_data)
+            }
+        }
+    }).catch((err)=>{
+        console.log(err);
+    })     
+});
 
 // app.delete("/delapi/:auction_id",(req,res)=>{
 //     let auction_id = req.params.auction_id

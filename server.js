@@ -7,6 +7,6 @@ const data = require("./routes/auction")
 app.use("/apis",data)
  
 
-app.listen(5000,()=>{
+app.listen(6000,()=>{
     console.log("server is listening..............)")
 });
