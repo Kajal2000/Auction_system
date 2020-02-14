@@ -25,3 +25,16 @@ knex.schema.createTable('Bidder_data_tbl', (table) => {
     }).catch((err)=>{
         console.log("there are some error")
     })
+
+// thid tbl
+
+knex.schema.createTable('sold_tbl', (table) => {
+    table.string('auction_name');
+    table.integer('price');
+    table.increments('auction_id');
+    })
+    .then(()=>{
+        console.log("tbl created")
+    }).catch((err)=>{
+        console.log("there are some error")
+    })

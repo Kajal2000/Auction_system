@@ -71,6 +71,7 @@ app.get("/get_max/:auction_id",(req,res)=>{
     })     
 });
 
+
 // app.delete("/delapi/:auction_id",(req,res)=>{
 //     let auction_id = req.params.auction_id
 //     var data = appDB.del_bidder(auction_id)
