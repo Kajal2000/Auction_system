@@ -63,7 +63,7 @@ app.get("/get_max/:auction_id",(req,res)=>{
                 bidder_id : bidder_id,
                 auction_id : auction_id
             }
-        res.send(won_data)
+        res.send(you_win)
             }
         }
     }).catch((err)=>{
